@@ -1,1 +1,16 @@
-Connection Failed: Access denied for user ''@'localhost' (using password: NO)
+<?php
+
+$servername = "";
+$username = "";
+$password = "";
+$dbname = "";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+	die("Connection Failed: " . $conn->connect_error);
+}
+
+?>
