@@ -1,0 +1,49 @@
+<?php
+
+echo "<!DOCTYPE html>
+<html lang=\"en\">
+
+<body>
+<main>
+<form align = \"center\" action=\"delete.php\" method=\"post\">
+	<label>Item ID</label><br>
+	<input type=\"text\" size=25 class=\"textbox\" id=\"txt_iid\" name=\"itemid\" required> <br>
+	<hr>
+	<button type=\"submit\">Delete Item</button>
+</form>";
+
+include "connect.php";
+
+$entered_ID = $_POST['itemid'];
+
+$sql = "SELECT * FROM Item WHERE ItemID=$itemid";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	$sql = "DELETE FROM Item WHERE ItemID=$entered_ID";
+	$result = $conn->query($sql);
+	
+	$sql = "SELECT * FROM Item WHERE ItemID=$itemid";
+	$result = $conn->query($sql);
+	
+	if ($result->num_rows > 0) {
+		echo "<p align = \"center\" >
+		<b>There was an issue deleting the item</b>
+		</p>";
+	} else {
+		echo "<p align = \"center\" >
+		<b>The item has been deleted</b>
+		</p>";
+	}
+} else {
+	echo "<p align = \"center\" >
+	<b>This item does not exist</b>
+	</p>";
+}
+
+echo "</body>
+</html";
+
+$mysqli->close();
+
+?>

@@ -13,20 +13,7 @@ echo "<!DOCTYPE html>
 
 
 
-$servername = "localhost:3307";
-$username = "root";
-$password = "root";
-$dbname = "Watto";
-
-
-
-//Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-//Check connection
-if($conn->connect_error) {
-	die("Connection Failed: " . $conn->connect_error);
-}
+include 'connect.php';
 
 
 $entered_itemid = $_POST['itemid'];
